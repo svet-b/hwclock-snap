@@ -15,9 +15,7 @@ apps:
     stop-command: sbin/hwclock --systohc --utc --adjfile=$SNAP_DATA/adjtime
     plugs:
       - time-control
-      - i2c
-      - network-bind
-      - network
+      - network-audit
 
 parts:
   hwclock:
