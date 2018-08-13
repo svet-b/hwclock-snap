@@ -1,4 +1,4 @@
-name: hwclock
+name: hwclock-svc
 version: '0.1'
 summary: Service that reads time from RTC on boot and saves it on shutdown
 description: |
