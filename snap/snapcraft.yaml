@@ -11,8 +11,8 @@ confinement: strict
 apps:
   hwclock:
     daemon: oneshot
-    command: sbin/hwclock --hctosys --utc --adjfile=$SNAP_DATA/adjtime
-    stop-command: sbin/hwclock --systohc --utc --adjfile=$SNAP_DATA/adjtime
+    command: sh -c "/sbin/hwclock --hctosys --utc --adjfile=$SNAP_DATA/adjtime || true"
+    stop-command: sh -c "/sbin/hwclock --systohc --utc --adjfile=$SNAP_DATA/adjtime || true"
     plugs:
       - time-control
       - netlink-audit
@@ -20,5 +20,3 @@ apps:
 parts:
   hwclock:
     plugin: nil
-    stage-packages:
-      - util-linux
