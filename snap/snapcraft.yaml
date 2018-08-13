@@ -1,0 +1,22 @@
+name: hwclock
+version: '0.1'
+summary: Service that reads time from RTC on boot and saves it on shutdown
+description: |
+  Background service for managing RTC. On boot, the system time is read from RTC.
+  On shutdown, the RTC is set to system time.
+
+grade: stable
+confinement: strict
+
+apps:
+  hwclock:
+    daemon: oneshot
+    command: sbin/hwclock --hctosys --utc --adjfile=$SNAP_DATA/etc/adjtime
+    stop-command: sbin/hwclock --systohc --utc --adjfile=$SNAP_DATA/etc/adjtime
+    plugs: [time-control]
+
+parts:
+  hwclock:
+    plugin: nil
+    stage-packages:
+      - util-linux
