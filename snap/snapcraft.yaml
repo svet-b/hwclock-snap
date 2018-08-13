@@ -11,11 +11,12 @@ confinement: strict
 apps:
   hwclock:
     daemon: oneshot
-    command: sbin/hwclock --hctosys --utc --adjfile=$SNAP_DATA/adjtime || true
-    stop-command: sbin/hwclock --systohc --utc --adjfile=$SNAP_DATA/adjtime || true
+    command: sbin/hwclock --hctosys --utc --adjfile=$SNAP_DATA/adjtime
+    stop-command: sbin/hwclock --systohc --utc --adjfile=$SNAP_DATA/adjtime
     plugs:
       - time-control
       - i2c
+      - network-bind
 
 parts:
   hwclock:
