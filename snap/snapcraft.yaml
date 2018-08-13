@@ -17,6 +17,7 @@ apps:
       - time-control
       - i2c
       - network-bind
+      - network
 
 parts:
   hwclock:
